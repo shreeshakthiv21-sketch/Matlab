@@ -1,0 +1,10 @@
+clc
+clear
+close
+w=2;
+t=-3:0.1:3;
+y= tripuls(t,w)
+plot(t,y)
+xlabel('-------> time');
+ylabel('-------> output signal');
+title('Triangular wave');

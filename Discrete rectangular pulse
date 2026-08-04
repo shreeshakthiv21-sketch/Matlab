@@ -1,0 +1,16 @@
+clc
+clear
+close
+
+w=0.5;
+t=-1.5:0.1:1.5;
+for i= 1: length(t)
+    if t(i)>=-w & t(i)<=w
+        x(i)=1
+    else
+        x(i)=0
+    end
+end
+figure(1)
+stem(t,x)
+axis([-1.5 1.5 0.5 1.5])

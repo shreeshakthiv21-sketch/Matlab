@@ -1,0 +1,29 @@
+clc
+clear
+close
+
+
+X = input('Enter the DFT sequence (Example: [2 1-1j 0 1+1j]): ');
+
+
+N = length(X);
+
+
+for n = 0:N-1
+
+   
+    x(n+1) = 0;
+
+ 
+    for k = 0:N-1
+
+        x(n+1) = x(n+1) + X(k+1)*exp(1j*2*pi*k*n/N);
+
+    end
+
+    x(n+1) = x(n+1)/N;
+
+end
+
+disp('Recovered Time Sequence:')
+disp(x)

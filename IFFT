@@ -1,0 +1,16 @@
+clc
+clear
+close
+
+X= input("ENter the given sequence")
+
+x= ifft(X);
+disp('The IFFT of the FFT sequence is:')
+disp(x)
+
+subplot(1,1,1)
+stem(0:length(x)-1,real(x))
+title('IFFT - x(n)')
+xlabel('Samples')
+ylabel('Amplitude')
+grid on

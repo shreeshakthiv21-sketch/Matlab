@@ -1,0 +1,43 @@
+clc
+clear
+close
+
+fprintf("Program for butterworth iir low pass filter\n");
+fp= input("Enter the pass edge frequency");
+fs= input("ENter the stop edge frequency:");
+
+OMEGAP= 2*pi*fp;
+OMEGAS= 2*pi*fs;
+
+fprintf('OMEGAP is %f\n', OMEGAP);
+fprintf('OMEGAS is %f\n', OMEGAS);
+
+Rp= input("Enter the passband attenuation");
+Rs= input("Enter the stopband attenuation");
+
+[n,Wn]= buttord(OMEGAP, OMEGAS, Rp,Rs,'s');
+[b,a]= butter(n,Wn,'s');
+
+omega = 0:1:2*OMEGAS;
+[h,w] = freqs(b,a,omega);
+mag_h = 20*log10(abs(h));
+
+
+figure(1);
+subplot(2,1,1);
+plot(w,mag_h);
+xlabel('Angular frequency omega -->');
+ylabel('Gain in dB -->');
+title('Magnitude Response of LPF');
+grid on
+
+
+angle_h = angle(h);
+
+
+subplot(2,1,2);
+plot(w,angle_h);
+xlabel('Angular frequency omega -->');
+ylabel('Phase in radians -->');
+title('Phase Response of LPF');
+grid on

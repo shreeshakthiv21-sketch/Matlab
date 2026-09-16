@@ -30,6 +30,6 @@ grid on
 subplot(2,1,2)
 plot(w,angle_h)
 xlabel('Angular frequency')
-ylabel('Phase in degree')
+ylabel('Phase in radian')
 title('Phase response')
 grid on

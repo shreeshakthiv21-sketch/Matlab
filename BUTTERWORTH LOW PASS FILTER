@@ -1,0 +1,35 @@
+clc
+clear
+close
+
+fp= input("Enter the frequency of passband:");
+fs=input("Enter the frequency of stopband:");
+
+OMEGAP=2*pi*fp;
+OMEGAS= 2*pi*fs;
+
+rp= input("Enter the passband ripple coefficient:")
+rs= input("Enter the stopband ripple attenuation:")
+
+[n,wn]=buttord(OMEGAP,OMEGAS,rp,rs,'s')
+[b,a]=butter(n,wn,'s')
+
+omega= 0:1:2*OMEGAS
+[h,w]=freqs(b,a,omega)
+
+mag_h= 20*log10(abs(h))
+angle_h= angle(h)
+
+subplot(2,1,1)
+plot(w,mag_h)
+xlabel('Angular frequency')
+ylabel('Gain in db')
+title('Magnitude response')
+grid on
+
+subplot(2,1,2)
+plot(w,angle_h)
+xlabel('Angular frequency')
+ylabel('Phase in degree')
+title('Phase response')
+grid on

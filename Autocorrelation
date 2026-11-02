@@ -1,0 +1,14 @@
+clc
+clear
+close
+
+x= input("Enter the input sequence")
+y= xcorr(x,x)
+
+subplot(2,1,1)
+stem(x)
+title('Input signal')
+
+subplot(2,1,2)
+stem(y)
+title('Autocorrelated signal')
